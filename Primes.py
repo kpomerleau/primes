@@ -20,43 +20,43 @@ def prime(n):
         return False
 
     for i in range(3, (int(n**0.5) + 1), 2):    #Checks whether a number is divisible
-                                                #by any number 
-        if n % i == 0:
+                                                #by any number but itself, skipping multiples of two
+        if n % i == 0:                          #and limiting itself to the square of the number
 
             return False
 
     return True
 
-def factorization(n):
-
+def factors(n):                           #This function finds all the unique prime factors of 
+                                                #Any given number
     factors = []
 
-    x = 0
     i = 3
 
     if n % 2 == 0:
 
         factors.append(2)
+        n = int(n/2)
 
-        x += 1
-
-    while(True):
+    while True:
 
         if prime(i) == True and n % i == 0:
 
             factors.append(i)
 
-            n = n/i
-            x += 1
+            n = int(n/i)
             i += 2
 
-            if i > n:
+        else:
 
-                False
+            i += 2
+        
+        if i > n:
 
-        i += 2
+            break
           
     return factors
+
 
 
          
